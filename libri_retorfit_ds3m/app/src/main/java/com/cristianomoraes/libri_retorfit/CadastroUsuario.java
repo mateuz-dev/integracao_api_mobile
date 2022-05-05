@@ -64,7 +64,7 @@ public class CadastroUsuario extends AppCompatActivity {
     }//FIM SO MÉTODO onCreate
 
     /** IMPLEMENTAÇÃO DO MÉTODO DE Call addUsuario **/
-    public void addUsuario(Usuario usuario){
+    public void addUsuario(Usuario  usuario){
 
         Call<Usuario> call = routerInterface.addUsuario(usuario);
 

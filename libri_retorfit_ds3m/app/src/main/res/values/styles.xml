@@ -14,7 +14,6 @@
     </style>
 
     <style name="textTitle">
-        <item name="android:layout_marginTop">40dp</item>
         <item name="android:layout_marginStart">30dp</item>
         <item name="android:layout_marginEnd">30dp</item>
         <item name="android:layout_marginBottom">40dp</item>

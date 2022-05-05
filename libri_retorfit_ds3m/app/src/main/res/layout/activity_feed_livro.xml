@@ -9,19 +9,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        style="@style/textTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="FEED DE LIVROS" />
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerVeiw"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+ <androidx.recyclerview.widget.RecyclerView
+     android:id="@+id/recyclerView"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:padding="8dp"
+     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+     />
 
 </LinearLayout>

@@ -18,6 +18,7 @@ import retrofit2.Response;
 
 public class CadastroLivro extends AppCompatActivity {
 
+    /** ATRIBUTOS **/
     RouterInterface routerInterface;
     EditText txtTitulo;
     EditText txtDescricao;
@@ -29,42 +30,48 @@ public class CadastroLivro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_livro);
 
+        /** ASSOCIAR OS COMPONENTES GRÁFICOS AOS ATRIBUTOS **/
         txtTitulo = findViewById(R.id.txtTitulo);
-        txtDescricao = findViewById(R.id.txtFoto);
+        txtDescricao = findViewById(R.id.txtLivroDescricao);
         txtFoto = findViewById(R.id.txtFoto);
         btnInserirLivro = findViewById(R.id.btnCadastrarLivro);
 
-        /** configuração do RouterInterface **/
+        /** CONFIGURAÇÃO DO RouterInterface **/
         routerInterface = APIUtil.getUsuarioInterface();
 
-        btnInserirLivro.setOnClickListener(view -> {
-            /* criando objeto de Livro */
+        /** TRATAMENTO DA AÇÃO DE CLICK OU TOQUE DE TELA
+         * DO BOTÃO INSERIR LIVRO
+         * **/
+        btnInserirLivro.setOnClickListener(view->{
+
+            /** CRIA O OBJETO DE LIVRO E RECEBE OS DADOS **/
             Livro livro = new Livro();
+
             livro.setTitulo(txtTitulo.getText().toString());
             livro.setDescricao(txtDescricao.getText().toString());
-            livro.setImagem(txtFoto.getText().toString());
             livro.setTblUsuarioCodUsuario(1);
 
-            /** chamada do método de inserção de Livro **/
+            /** CHAMADA DO MÉTODO DA ROTA DE INSERÇÃO DE LIVROS **/
             addLivro(livro);
+
         });
-    }
 
+    }//FIM DO MÉTODO onCreate
 
-    /** método ~addLivro~ da RouterInterface **/
-    public void addLivro(Livro livro) {
+    /** IMPLEMENTAÇÃO DO MÉTODO addLivro DA INTERFACE RouterInterface**/
+    public void addLivro(Livro livro){
+
+        /** LIGA O MÉTODO addLivro DA CLASSE CadstroLivro
+         * COM SUA REPRESENTAÇÃO NA INTERFACE RouterInterface
+         * **/
         Call<Livro> call = routerInterface.addLivro(livro);
 
-        /* executar a chamada da rota */
+        /** EXECUÇÃO DA CHAMADA DA ROTA **/
         call.enqueue(new Callback<Livro>() {
             @Override
             public void onResponse(Call<Livro> call, Response<Livro> response) {
-                txtTitulo.setText("");
-                txtDescricao.setText("");
-                txtFoto.setText("");
-
                 Toast.makeText(CadastroLivro.this,
-                        "LIVRO CADASTRADO COM SUCESSO",
+                        "LIVRO INSERIDO COM SUCESSO",
                         Toast.LENGTH_LONG).show();
             }
 
@@ -73,5 +80,16 @@ public class CadastroLivro extends AppCompatActivity {
                 Log.d("ERRO-API", t.getMessage());
             }
         });
+
     }
+
+
 }
+
+
+
+
+
+
+
+
